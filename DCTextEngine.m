@@ -261,13 +261,13 @@
 {
     DCTextEngine *engine = [[DCTextEngine alloc] init];
     __weak DCTextEngine *blockEngine = engine;
-    [engine addPattern:@"(?m)^[-]\\s[^-]\\B.*" found:^DCTextOptions*(NSString *regex, NSString *text){
+    [engine addPattern:@"(?m)^[-]\\s[^-].*" found:^DCTextOptions*(NSString *regex, NSString *text){
         return [blockEngine unorderList:@"-" text:text];
     }];
-    [engine addPattern:@"(?m)^[+]\\s[^+]\\B.*" found:^DCTextOptions*(NSString *regex, NSString *text){
+    [engine addPattern:@"(?m)^[+]\\s[^+].*" found:^DCTextOptions*(NSString *regex, NSString *text){
         return [blockEngine unorderList:@"+" text:text];
     }];
-    [engine addPattern:@"(?m)^[*]\\s[^*]\\B.*" found:^DCTextOptions*(NSString *regex, NSString *text){
+    [engine addPattern:@"(?m)^[*]\\s[^*].*" found:^DCTextOptions*(NSString *regex, NSString *text){
         return [blockEngine unorderList:@"*" text:text];
     }];
     [engine addPattern:@"!\\[([^\\[]+)\\]\\(([^\\)]+)\\" found:^DCTextOptions*(NSString *regex, NSString *text){
